@@ -6,8 +6,17 @@ console.log("[Next] build mode", mode);
 const disableChunk = !!process.env.DISABLE_CHUNK || mode === "export";
 console.log("[Next] build with chunk: ", !disableChunk);
 
+// GitHub Pages 配置
+const isGitHubPages = process.env.GITHUB_PAGES === "true";
+const basePath = isGitHubPages ? "/pptking" : "";
+const assetPrefix = isGitHubPages ? "/pptking" : "";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  ...(isGitHubPages && {
+    basePath: basePath,
+    assetPrefix: assetPrefix,
+  }),
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,
