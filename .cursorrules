@@ -6,4 +6,4 @@
 - **重要**: 项目中的 Supabase 均为调用远程连接，不是本地 Docker 环境
 - 所有 Supabase 操作都是针对远程 Supabase 服务
 - 函数部署、数据库操作、环境变量配置都针对远程项目
-- 项目 ID: aowvrhasuregcsqliqnl
+- 项目 ID: XXX

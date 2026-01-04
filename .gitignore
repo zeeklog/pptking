@@ -39,3 +39,4 @@ package-lock.json
 # Supabase temporary files
 supabase/.temp/
 .yarn/
+.cursorrules
