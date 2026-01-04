@@ -58,7 +58,7 @@ PPT Visionary AI 是一个功能强大的在线演示文稿制作平台，结合
 - **UI组件**: Radix UI + 自定义组件库
 - **动画**: Framer Motion
 - **图表**: ECharts
-- **富文本**: ProseMirror
+- **富文本**: ProseMirrorgit
 - **数学公式**: KaTeX
 - **本地存储**: IndexedDB (Dexie)
 
@@ -133,10 +133,15 @@ PPT Visionary AI 是一个功能强大的在线演示文稿制作平台，结合
 
 ### 本地开发
 
+本项目基本数据存储使用supabase, 请先注册申请key, 免费。
+- supabase 数据存储
+- 微信网页应用AKSK，微信用户登录
+- open router API KEY， 调用大模型， 支持的模型供应商详见 .env.example
+
 1. **克隆项目**
 ```bash
-git clone https://github.com/your-username/ppt-visionary-ai.git
-cd ppt-visionary-ai
+git clone https://github.com/zeeklog/pptking.git
+cd pptking
 ```
 
 2. **安装依赖**
@@ -201,10 +206,10 @@ npm run cf:deploy
 #### Docker 部署
 ```bash
 # 构建 Docker 镜像
-docker build -t ppt-visionary-ai .
+docker build -t pptking .
 
 # 运行容器
-docker run -p 3000:3000 ppt-visionary-ai
+docker run -p 3000:3000 pptking
 ```
 
 ## ⚙️ 配置指南
@@ -266,7 +271,7 @@ supabase functions deploy
 
 ### 项目结构
 ```
-ppt-visionary-ai/
+pptking/
 ├── app/                    # Next.js App Router
 │   ├── api/               # API 路由
 │   ├── components/        # React 组件
