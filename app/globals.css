@@ -1,0 +1,842 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* 主色调系统 - 符合UI设计风格约束 */
+    --background: 238 242 255; /* #EEF2FF 淡靛紫 - 页面主背景 */
+    --foreground: 55 65 81; /* #374151 深灰 - 主标题文字 */
+    --card: 255 255 255; /* #FFFFFF 白色 - 卡片背景 */
+    --card-foreground: 55 65 81; /* #374151 深灰 - 卡片文字 */
+    --popover: 255 255 255; /* #FFFFFF 白色 - 弹出框背景 */
+    --popover-foreground: 55 65 81; /* #374151 深灰 - 弹出框文字 */
+    --primary: 99 102 241; /* #6366F1 主紫 - 主色调 */
+    --primary-foreground: 255 255 255; /* #FFFFFF 白色 - 主色文字 */
+    --secondary: 199 210 254; /* #C7D2FE 柔靛紫 - 次色调 */
+    --secondary-foreground: 79 70 229; /* #4F46E5 深紫 - 次色文字 */
+    --muted: 249 250 251; /* #F9FAFB 科技浅灰 - 次要背景 */
+    --muted-foreground: 107 114 128; /* #6B7280 科技中灰 - 正文文字 */
+    --accent: 199 210 254; /* #C7D2FE 柔靛紫 - 强调色 */
+    --accent-foreground: 79 70 229; /* #4F46E5 深紫 - 强调文字 */
+    --border: 199 210 254; /* #C7D2FE 柔靛紫 - 边框色 */
+    --input: 199 210 254; /* #C7D2FE 柔靛紫 - 输入框边框 */
+    --ring: 99 102 241; /* #6366F1 主紫 - 焦点环 */
+
+    /* 功能色彩系统 - 符合UI设计风格约束 */
+    --success: 16 185 129; /* #10B981 成功绿 */
+    --success-foreground: 255 255 255;
+    --error: 239 68 68; /* #EF4444 错误红 */
+    --error-foreground: 255 255 255;
+    --warning: 245 158 11; /* #F59E0B 警告橙 */
+    --warning-foreground: 255 255 255;
+    --info: 59 130 246; /* #3B82F6 信息蓝 */
+    --info-foreground: 255 255 255;
+    
+    /* 兼容性变量 */
+    --destructive: 239 68 68; /* #EF4444 错误红 */
+    --destructive-foreground: 255 255 255;
+    --radius: 5px;
+  }
+
+  .dark {
+    /* 深色模式主色调系统 - 符合UI设计风格约束 */
+    --background: 26 27 38; /* #1A1B26 深灰蓝 - 页面主背景 */
+    --foreground: 249 250 251; /* #F9FAFB 浅灰 - 主标题文字 */
+    --card: 31 41 55; /* #1F2937 科技灰黑 - 卡片背景 */
+    --card-foreground: 249 250 251; /* #F9FAFB 浅灰 - 卡片文字 */
+    --popover: 31 41 55; /* #1F2937 科技灰黑 - 弹出框背景 */
+    --popover-foreground: 249 250 251; /* #F9FAFB 浅灰 - 弹出框文字 */
+    --primary: 99 102 241; /* #6366F1 主紫 - 主色调 */
+    --primary-foreground: 255 255 255; /* #FFFFFF 白色 - 主色文字 */
+    --secondary: 55 48 163; /* #3730A3 暗靛紫 - 次色调 */
+    --secondary-foreground: 238 242 255; /* #EEF2FF 淡靛紫 - 次色文字 */
+    --muted: 55 65 81; /* #374151 科技深灰 - 次要背景 */
+    --muted-foreground: 156 163 175; /* #9CA3AF 科技浅灰 - 正文文字 */
+    --accent: 55 48 163; /* #3730A3 暗靛紫 - 强调色 */
+    --accent-foreground: 238 242 255; /* #EEF2FF 淡靛紫 - 强调文字 */
+    --border: 55 65 81; /* #374151 科技深灰 - 边框色 */
+    --input: 55 65 81; /* #374151 科技深灰 - 输入框边框 */
+    --ring: 99 102 241; /* #6366F1 主紫 - 焦点环 */
+
+    /* 功能色彩系统 - 深色模式 */
+    --success: 16 185 129; /* #10B981 成功绿 */
+    --success-foreground: 255 255 255;
+    --error: 239 68 68; /* #EF4444 错误红 */
+    --error-foreground: 255 255 255;
+    --warning: 245 158 11; /* #F59E0B 警告橙 */
+    --warning-foreground: 255 255 255;
+    --info: 59 130 246; /* #3B82F6 信息蓝 */
+    --info-foreground: 255 255 255;
+    
+    /* 兼容性变量 */
+    --destructive: 239 68 68; /* #EF4444 错误红 */
+    --destructive-foreground: 255 255 255;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    overflow-x: hidden; /* 防止水平滚动 */
+  }
+
+  html {
+    overflow-x: hidden; /* 防止水平滚动 */
+  }
+
+  /* 自定义滚动条 */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-purple-50 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-purple-200 rounded-full hover:bg-purple-300 transition-colors;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-purple-400;
+  }
+}
+
+@layer components {
+  /* 核心渐变系统 */
+  .bg-gradient-primary {
+    background: linear-gradient(135deg, #6366F1 0%, #4F46E5 100%);
+  }
+
+  .bg-gradient-card-highlight {
+    background: linear-gradient(180deg, #EEF2FF 0%, rgba(238, 242, 255, 0) 100%);
+  }
+
+  .bg-gradient-banner {
+    background: linear-gradient(90deg, #6366F1 0%, #818CF8 50%, #A5B4FC 100%);
+  }
+
+  .bg-gradient-tech-texture {
+    background: radial-gradient(circle at 10% 20%, #6366F1 0%, rgba(99, 102, 241, 0) 50%);
+  }
+
+  /* 功能渐变 */
+  .bg-gradient-success {
+    background: linear-gradient(135deg, #10B981 0%, #34D399 100%);
+  }
+
+  .bg-gradient-loading {
+    background: linear-gradient(90deg, #EEF2FF 0%, #6366F1 50%, #EEF2FF 100%);
+  }
+
+  .bg-gradient-warning {
+    background: linear-gradient(135deg, #F59E0B 0%, #FBBF24 100%);
+  }
+
+  /* 磨砂玻璃效果 */
+  .backdrop-blur-glass {
+    backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.9);
+  }
+
+  .backdrop-blur-glass-dark {
+    backdrop-filter: blur(12px);
+    background: rgba(31, 41, 55, 0.9);
+  }
+
+  /* 卡片样式 */
+  .card-glass {
+    @apply backdrop-blur-glass border border-white/20 shadow-md;
+  }
+
+  .card-glass-dark {
+    @apply backdrop-blur-glass-dark border border-gray-600/20 shadow-md;
+  }
+
+  /* 按钮样式 */
+  .btn-primary {
+    @apply bg-gradient-primary text-white font-semibold px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105;
+  }
+
+  .btn-secondary {
+    @apply bg-white text-purple-600 border border-purple-200 font-semibold px-6 py-3 rounded-lg shadow hover:shadow-md transition-all duration-300 hover:scale-105;
+  }
+
+  .btn-danger {
+    @apply bg-white text-error-600 border border-error-200 font-semibold px-6 py-3 rounded-lg shadow-sm hover:shadow transition-all duration-300 hover:scale-105;
+  }
+
+  /* 输入框样式 */
+  .input-glass {
+    @apply bg-white/90 backdrop-blur-sm border border-purple-200/50 rounded-lg focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300;
+  }
+
+  /* 悬停效果 */
+  .hover-lift {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
+  }
+
+  .hover-glow {
+    @apply transition-all duration-300 hover:shadow-md;
+  }
+
+  /* 动画系统 */
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.8s ease-out;
+  }
+
+  .animate-slide-in-left {
+    animation: slideInLeft 0.6s ease-out;
+  }
+
+  .animate-slide-in-right {
+    animation: slideInRight 0.6s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.5s ease-out;
+  }
+
+  .animate-bounce-in {
+    animation: bounceIn 0.8s ease-out;
+  }
+
+  /* 新增细腻动画 */
+  .animate-gradient-x {
+    background-size: 200% 200%;
+    animation: gradientX 3s ease infinite;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  .animate-shimmer {
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+
+  .animate-ripple {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .animate-ripple::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+  }
+
+  .animate-ripple:active::before {
+    width: 300px;
+    height: 300px;
+  }
+
+  /* 加载动画 */
+  .animate-pulse-slow {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .animate-spin-slow {
+    animation: spin 3s linear infinite;
+  }
+
+  /* 渐变文字 */
+  .text-gradient-primary {
+    @apply bg-gradient-primary bg-clip-text text-transparent;
+  }
+
+  .text-gradient-banner {
+    @apply bg-gradient-banner bg-clip-text text-transparent;
+  }
+
+  /* 边框动画 */
+  .border-animate {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .border-animate::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.3), transparent);
+    transition: left 0.5s;
+  }
+
+  .border-animate:hover::before {
+    left: 100%;
+  }
+
+  /* 特殊效果 */
+  .shadow-elegant {
+    box-shadow: 0 20px 25px -5px rgba(99, 102, 241, 0.1), 0 10px 10px -5px rgba(99, 102, 241, 0.04);
+  }
+
+  .shadow-card {
+    box-shadow: 0 4px 6px rgba(99, 102, 241, 0.1);
+  }
+
+  .shadow-purple-sm {
+    box-shadow: 0 2px 4px rgba(99, 102, 241, 0.1);
+  }
+
+  .shadow-purple-md {
+    box-shadow: 0 4px 8px rgba(99, 102, 241, 0.15);
+  }
+
+  .shadow-purple-lg {
+    box-shadow: 0 8px 16px rgba(99, 102, 241, 0.2);
+  }
+
+  .shadow-purple-xl {
+    box-shadow: 0 16px 32px rgba(99, 102, 241, 0.25);
+  }
+
+  .shadow-2xl {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  }
+
+  .shadow-3xl {
+    box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.3);
+  }
+
+  /* 模板卡片样式 */
+  .template-card {
+    @apply bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1;
+  }
+
+  .template-card-selected {
+    @apply bg-purple-50 border-2 border-purple-200 shadow-lg;
+  }
+
+  .template-card-recommended {
+    @apply bg-gradient-primary text-white shadow-lg;
+  }
+
+  /* 状态提示框样式 */
+  .alert-success {
+    @apply bg-success-50 border border-success-200 text-success-800 rounded-lg p-4;
+  }
+
+  .alert-error {
+    @apply bg-error-50 border border-error-200 text-error-800 rounded-lg p-4;
+  }
+
+  .alert-warning {
+    @apply bg-warning-50 border border-warning-200 text-warning-800 rounded-lg p-4;
+  }
+
+  .alert-info {
+    @apply bg-info-50 border border-info-200 text-info-800 rounded-lg p-4;
+  }
+
+  /* 微交互效果 */
+  .micro-interaction {
+    @apply transition-all duration-200 ease-out;
+  }
+
+  .micro-interaction:hover {
+    @apply transform scale-105;
+  }
+
+  .micro-interaction:active {
+    @apply transform scale-95;
+  }
+
+  /* 卡片悬停效果 */
+  .card-hover {
+    @apply transition-all duration-500 ease-out;
+  }
+
+  .card-hover:hover {
+    @apply transform scale-105 shadow-2xl;
+  }
+
+  /* 按钮悬停效果 */
+  .btn-hover {
+    @apply transition-all duration-300 ease-out relative overflow-hidden;
+  }
+
+  .btn-hover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+  }
+
+  .btn-hover:hover::before {
+    left: 100%;
+  }
+
+  /* 图标悬停效果 */
+  .icon-hover {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .icon-hover:hover {
+    @apply transform scale-110 rotate-3;
+  }
+
+  /* 文字悬停效果 */
+  .text-hover {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .text-hover:hover {
+    @apply text-purple-600;
+  }
+}
+
+@layer utilities {
+  /* 动画关键帧 */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes bounceIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.3);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+    70% {
+      transform: scale(0.9);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /* 新增细腻动画关键帧 */
+  @keyframes gradientX {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes glow {
+    from {
+      box-shadow: 0 0 5px rgba(99, 102, 241, 0.2);
+    }
+    to {
+      box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  @keyframes morph {
+    0%, 100% {
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    }
+    50% {
+      border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+    }
+  }
+
+  @keyframes wave {
+    0%, 100% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(5deg);
+    }
+    75% {
+      transform: rotate(-5deg);
+    }
+  }
+
+  /* 响应式工具类 */
+  .container-responsive {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* 网格布局 */
+  .grid-auto-fit {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+
+  .grid-auto-fill {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+
+  /* 文本工具 */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* 交互状态 */
+  .interactive {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .interactive:hover {
+    @apply transform scale-105;
+  }
+
+  /* 渐变边框 */
+  .gradient-border {
+    position: relative;
+    background: white;
+    border-radius: 12px;
+  }
+
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 2px;
+    background: linear-gradient(135deg, #6366F1, #4F46E5);
+    border-radius: 12px;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+  }
+
+  /* 毛玻璃效果 */
+  .glass-effect {
+    backdrop-filter: blur(16px);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  /* 霓虹效果 */
+  .neon-effect {
+    box-shadow: 
+      0 0 5px rgba(99, 102, 241, 0.5),
+      0 0 10px rgba(99, 102, 241, 0.3),
+      0 0 15px rgba(99, 102, 241, 0.1);
+  }
+
+  /* 3D 效果 */
+  .effect-3d {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+  }
+
+  .effect-3d:hover {
+    transform: rotateY(10deg) rotateX(5deg);
+  }
+
+  /* 粒子效果背景 */
+  .particle-bg {
+    background-image: 
+      radial-gradient(circle at 25% 25%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.05) 0%, transparent 50%);
+  }
+
+  /* 动态阴影 */
+  .dynamic-shadow {
+    box-shadow: 
+      0 1px 3px rgba(0, 0, 0, 0.12),
+      0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  }
+
+  .dynamic-shadow:hover {
+    box-shadow: 
+      0 14px 28px rgba(0, 0, 0, 0.25),
+      0 10px 10px rgba(0, 0, 0, 0.22);
+  }
+
+  /* 渐变文字动画 */
+  .gradient-text-animate {
+    background: linear-gradient(-45deg, #6366F1, #8B5CF6, #EC4899, #6366F1);
+    background-size: 400% 400%;
+    animation: gradientX 3s ease infinite;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* 呼吸效果 */
+  .breathing {
+    animation: breathing 4s ease-in-out infinite;
+  }
+
+  @keyframes breathing {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+  }
+
+  /* 脉冲效果 */
+  .pulse-ring {
+    position: relative;
+  }
+
+  .pulse-ring::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    border: 2px solid rgba(99, 102, 241, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulse-ring 2s infinite;
+  }
+
+  @keyframes pulse-ring {
+    0% {
+      transform: translate(-50%, -50%) scale(0.8);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(1.2);
+      opacity: 0;
+    }
+  }
+}
+
+/* PPT编辑器专用样式 */
+@layer utilities {
+  /* 渐变系统 - 符合UI设计风格约束 */
+  .bg-gradient-primary {
+    background: linear-gradient(135deg, #6366F1 0%, #4F46E5 100%);
+  }
+  
+  .bg-gradient-card {
+    background: linear-gradient(180deg, #EEF2FF 0%, rgba(238, 242, 255, 0) 100%);
+  }
+  
+  .bg-gradient-banner {
+    background: linear-gradient(90deg, #6366F1 0%, #818CF8 50%, #A5B4FC 100%);
+  }
+  
+  .bg-gradient-tech {
+    background: radial-gradient(circle at 10% 20%, #6366F1 0%, rgba(99, 102, 241, 0) 50%);
+  }
+
+  /* 阴影系统 - 符合UI设计风格约束 */
+  .shadow-purple-sm {
+    box-shadow: 0 2px 4px rgba(99, 102, 241, 0.05);
+  }
+  
+  .shadow-purple-md {
+    box-shadow: 0 4px 6px rgba(99, 102, 241, 0.1);
+  }
+  
+  .shadow-purple-lg {
+    box-shadow: 0 8px 16px rgba(99, 102, 241, 0.15);
+  }
+  
+  .shadow-purple-xl {
+    box-shadow: 0 12px 20px rgba(99, 102, 241, 0.2);
+  }
+
+  /* PPT画布专用样式 */
+  .ppt-canvas {
+    background-image: 
+      linear-gradient(to right, rgba(99, 102, 241, 0.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(99, 102, 241, 0.1) 1px, transparent 1px);
+  }
+  
+  .ppt-element-selected {
+    box-shadow: 0 0 0 2px #6366F1, 0 0 0 4px rgba(99, 102, 241, 0.2);
+  }
+  
+  .ppt-element-hover {
+    box-shadow: 0 0 0 1px #6366F1;
+  }
+
+  /* 自定义滚动条 */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(99, 102, 241, 0.05);
+    border-radius: 3px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(99, 102, 241, 0.2);
+    border-radius: 3px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(99, 102, 241, 0.3);
+  }
+
+  /* PPT编辑器全屏样式 */
+  .ppt-editor-fullscreen {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 9999 !important;
+    background: #000 !important;
+  }
+
+  /* 放映模式样式 */
+  .presentation-mode {
+    background: #000;
+    color: #fff;
+  }
+
+  .presentation-slide {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  /* AI科技感增强动画效果 */
+  .animate-float-3d {
+    animation: float3d 6s ease-in-out infinite;
+  }
+
+  .animate-rotate-3d {
+    animation: rotate3d 20s linear infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulseGlow 3s ease-in-out infinite;
+  }
+
+  .bg-gradient-radial {
+    background: radial-gradient(circle, var(--tw-gradient-stops));
+  }
+
+  @keyframes float3d {
+    0%, 100% {
+      transform: translateY(0px) rotateX(0deg) rotateY(0deg);
+    }
+    25% {
+      transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
+    }
+    50% {
+      transform: translateY(-5px) rotateX(-5deg) rotateY(-5deg);
+    }
+    75% {
+      transform: translateY(-15px) rotateX(5deg) rotateY(-5deg);
+    }
+  }
+
+  @keyframes rotate3d {
+    0% {
+      transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    }
+    100% {
+      transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+    }
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% {
+      box-shadow: 0 0 20px rgba(147, 51, 234, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 40px rgba(147, 51, 234, 0.6);
+    }
+  }
+}
