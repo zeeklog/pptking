@@ -4,11 +4,16 @@
 
 ## 部署步骤
 
-### 1. 启用 GitHub Pages
+### 1. 启用 GitHub Pages（必需的第一步）
+
+**重要**：在首次部署之前，必须先手动启用 GitHub Pages：
 
 1. 前往 GitHub 仓库的 **Settings** > **Pages**
+   - 直接访问：`https://github.com/zeeklog/pptking/settings/pages`
 2. 在 **Source** 部分，选择 **GitHub Actions** 作为部署源
-3. 保存设置
+3. 点击 **Save** 保存设置
+
+**注意**：如果看到 "Get Pages site failed" 错误，说明 Pages 尚未启用。请先完成上述步骤，然后重新运行工作流。
 
 ### 2. 配置环境变量
 
@@ -51,6 +56,23 @@ npx serve out
 ```
 
 ## 故障排除
+
+### "Get Pages site failed" 错误
+
+如果工作流报错 "Get Pages site failed"，请按以下步骤操作：
+
+1. **确保已手动启用 GitHub Pages**：
+   - 访问：`https://github.com/zeeklog/pptking/settings/pages`
+   - 在 **Source** 中选择 **GitHub Actions**
+   - 点击 **Save**
+
+2. **检查权限**：
+   - 确保仓库有 Pages 功能（公开仓库或 GitHub Pro/Team 账户）
+   - 确保工作流有正确的权限（已在工作流中配置）
+
+3. **重新运行工作流**：
+   - 在 Actions 标签页中，点击失败的工作流
+   - 点击 **Re-run all jobs**
 
 ### 构建失败
 
