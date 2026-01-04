@@ -14,9 +14,9 @@ const inter = {
   },
 };
 
-// 强制动态渲染 - Cloudflare Pages需要Edge Runtime
-export const runtime = 'edge';
-export const dynamic = 'force-dynamic';
+// 静态导出模式下不需要 edge runtime
+// export const runtime = 'edge';
+// export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'PPT Visionary AI - AI驱动的PPT生成平台',

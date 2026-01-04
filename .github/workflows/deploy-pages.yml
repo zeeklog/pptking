@@ -49,6 +49,29 @@ jobs:
           NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY }}
         run: yarn build
 
+      - name: Verify build output
+        run: |
+          echo "Checking build output..."
+          if [ ! -d "out" ]; then
+            echo "ERROR: out directory not found!"
+            echo "Listing current directory:"
+            ls -la
+            exit 1
+          fi
+          echo "Contents of out directory:"
+          ls -la out/ | head -20
+          if [ ! -f "out/index.html" ] && [ ! -f "out/pptking/index.html" ]; then
+            echo "ERROR: index.html not found in expected locations!"
+            find out -name "index.html" | head -10
+            exit 1
+          fi
+          echo "Build output verified successfully"
+          
+      - name: Create .nojekyll file
+        run: |
+          touch out/.nojekyll
+          echo "Created .nojekyll file to prevent Jekyll processing"
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
