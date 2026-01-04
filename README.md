@@ -201,7 +201,32 @@ npm run build
 
 # 部署到 Cloudflare Pages
 npm run cf:deploy
+
+# 构建 GitHub Pages 版本（静态导出）
+npm run build:github-pages
 ```
+
+#### GitHub Pages 部署
+
+项目已配置自动部署到 GitHub Pages。部署步骤：
+
+1. **启用 GitHub Pages**：
+   - 前往仓库 Settings > Pages
+   - Source 选择 "GitHub Actions"
+
+2. **配置环境变量**：
+   - 在 Settings > Secrets and variables > Actions 中添加：
+     - `NEXT_PUBLIC_SUPABASE_URL`
+     - `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`
+
+3. **自动部署**：
+   - 推送到 `main` 分支会自动触发部署
+   - 或手动在 Actions 标签页触发
+
+4. **访问网站**：
+   - 部署完成后访问：`https://zeeklog.github.io/pptking/`
+
+⚠️ **注意**：GitHub Pages 只支持静态站点，API 路由在静态导出模式下不可用。详细说明请查看 [.github/DEPLOYMENT.md](.github/DEPLOYMENT.md)
 
 #### Docker 部署
 ```bash
