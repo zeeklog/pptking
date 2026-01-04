@@ -26,13 +26,17 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version-file: '.node-version'
-          cache: 'yarn'
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: |
+          if [ -f yarn.lock ]; then
+            yarn install --frozen-lockfile
+          else
+            yarn install
+          fi
 
       - name: Build with static export
         env:
