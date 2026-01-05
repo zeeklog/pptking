@@ -26,12 +26,6 @@ export function Sidebar({ activeItem = "ppt-generation", onItemClick }: SidebarP
       description: "AI智能生成PPT"
     },
     {
-      id: "templates",
-      label: "模板库", 
-      icon: FileText,
-      description: "海量精美模板"
-    },
-    {
       id: "trash",
       label: "回收站",
       icon: Trash2,

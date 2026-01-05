@@ -24,7 +24,6 @@ import {
   TrendingUp,
 } from "lucide-react";
 import { PPTGenerationSection } from "@/components/PPTGenerationSection";
-import { TemplateSection } from "@/components/TemplateSection";
 import { useAuth } from "@/contexts/AuthContext";
 import { useLoginModal } from "@/contexts/LoginModalContext";
 import { useRouter } from "next/navigation";
@@ -49,9 +48,6 @@ export default function HomePageClient() {
           case "generate":
             router.push("/generate");
             break;
-          case "templates":
-            router.push("/templates");
-            break;
           case "copywriting":
             router.push("/copywriting");
             break;
@@ -65,9 +61,6 @@ export default function HomePageClient() {
     switch (feature) {
       case "generate":
         router.push("/generate");
-        break;
-      case "templates":
-        router.push("/templates");
         break;
       case "copywriting":
         router.push("/copywriting");
@@ -86,15 +79,6 @@ export default function HomePageClient() {
       bgGradient: "from-purple-50 to-pink-50",
       action: () => handleFeatureClick("generate"),
       stats: t("home.features.aiGeneration.stats"),
-    },
-    {
-      title: t("home.features.templateLibrary.title"),
-      description: t("home.features.templateLibrary.description"),
-      icon: FileText,
-      gradient: "from-blue-500 to-cyan-500",
-      bgGradient: "from-blue-50 to-cyan-50",
-      action: () => handleFeatureClick("templates"),
-      stats: t("home.features.templateLibrary.stats"),
     },
     {
       title: t("home.features.smartDesign.title"),
@@ -142,7 +126,6 @@ export default function HomePageClient() {
   ];
 
   const stats = [
-    { label: t("home.stats.templates"), value: "100,000+", icon: FileText, color: "text-blue-600", bgColor: "bg-blue-100" },
     { label: t("home.stats.users"), value: "500,000+", icon: Users, color: "text-purple-600", bgColor: "bg-purple-100" },
     { label: t("home.stats.generations"), value: "2,000,000+", icon: Sparkles, color: "text-pink-600", bgColor: "bg-pink-100" },
     { label: t("home.stats.satisfaction"), value: "98%", icon: Star, color: "text-yellow-600", bgColor: "bg-yellow-100" },
@@ -200,7 +183,7 @@ export default function HomePageClient() {
             <p className="text-xl lg:text-2xl text-tech-600 mb-10 leading-relaxed max-w-4xl mx-auto">
               {t("home.hero.description")}
               <br />
-              <span className="text-purple-600 font-medium">{t("home.hero.templateCount")}</span>，{t("home.hero.oneClickGenerate")}，{t("home.hero.makePresentation")}
+              {t("home.hero.oneClickGenerate")}，{t("home.hero.makePresentation")}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 justify-center mb-12">
@@ -214,15 +197,6 @@ export default function HomePageClient() {
                   <ArrowRight className="w-5 h-5 ml-3 group-hover:translate-x-1 transition-transform" />
                 </span>
                 <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                className="border-2 border-purple-200 text-purple-600 hover:bg-purple-50 hover:border-purple-300 text-lg px-10 py-6 shadow-md hover:shadow-lg transition-all duration-300 group"
-                onClick={() => handleFeatureClick("templates")}
-              >
-                <Play className="w-5 h-5 mr-3 group-hover:scale-110 transition-transform" />
-                {t("home.cta.viewTemplates")}
               </Button>
             </div>
 
@@ -424,14 +398,6 @@ export default function HomePageClient() {
                   {t("home.cta.freeStart")}
                   <ArrowRight className="w-5 h-5 ml-3 group-hover:translate-x-1 transition-transform" />
                 </span>
-              </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                className="border-2 border-white/30 text-white hover:bg-white/10 text-lg px-10 py-6 backdrop-blur-sm transition-all duration-300"
-                onClick={() => handleFeatureClick("templates")}
-              >
-                {t("home.cta.browseTemplates")}
               </Button>
             </div>
 

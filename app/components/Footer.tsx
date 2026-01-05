@@ -26,7 +26,6 @@ export function Footer() {
   const quickLinks = [
     { name: t('navigation.home'), path: "/" },
     { name: t('navigation.generate'), path: "/generate" },
-    { name: t('navigation.templates'), path: "/templates" },
     { name: t('navigation.copywriting'), path: "/copywriting" },
     { name: t('navigation.membership'), path: "/membership" },
     { name: t('navigation.help'), path: "/help" }

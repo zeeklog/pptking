@@ -21,11 +21,6 @@ const navigationItems = [
     description: "专业PPT在线编辑器"
   },
   {
-    title: "模板库", 
-    href: "/templates",
-    description: "海量精美PPT模板资源"
-  },
-  {
     title: "文案生成",
     href: "/copywriting", 
     description: "AI智能文案创作助手"

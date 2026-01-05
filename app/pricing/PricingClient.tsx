@@ -749,15 +749,6 @@ export default function Pricing() {
                   <Sparkles className="w-5 h-5 mr-2" />
                   {t('pricing.freeStart')}
                 </Button>
-                <Button 
-                  variant="outline" 
-                  size="lg"
-                  className="border-white text-white hover:bg-white/10 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
-                  onClick={() => window.location.href = '/templates'}
-                >
-                  <Palette className="w-5 h-5 mr-2" />
-                  {t('pricing.browseTemplates')}
-                </Button>
               </div>
             </CardContent>
           </Card>

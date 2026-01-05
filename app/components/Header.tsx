@@ -78,7 +78,6 @@ export function Header() {
     { title: t('navigation.home'), href: "/" },
     { title: t('navigation.generate'), href: "/generate" },
     { title: t('navigation.pptEdit'), href: "/ppt-edit" },
-    { title: t('navigation.templates'), href: "/templates" },
     { title: t('navigation.copywriting'), href: "/copywriting" },
     { title: t('navigation.chat'), href: "/chat" }
   ];
