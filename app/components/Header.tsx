@@ -230,13 +230,6 @@ export function Header() {
                     <Crown className="mr-3 h-4 w-4 text-purple-500" />
                     <span>{t('navigation.membership')}</span>
                   </DropdownMenuItem>
-                  <DropdownMenuItem
-                    className="text-tech-700 cursor-pointer dark:text-tech-300 p-3 rounded-lg hover:bg-purple-50 transition-colors"
-                    onClick={() => handleNavigation('/myCollection')}
-                  >
-                    <Heart className="mr-3 h-4 w-4 text-purple-500" />
-                    <span>{t('membership.myCollection')}</span>
-                  </DropdownMenuItem>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem
                     className="text-error-600 focus:text-error-600 cursor-pointer p-3 rounded-lg hover:bg-error-50 transition-colors"
