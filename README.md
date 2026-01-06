@@ -2,6 +2,8 @@
 
 `这是一个手搓的AI生成PPT项目以及附带一个高定PPT编辑器项目，由于空闲时间投入其他项目现将本项目开源`
 
+- [PPT KING 系统设计说明书（Writed by ai）](https://github.com/zeeklog/pptking/blob/main/PPT%20KING%20%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1%E9%9C%80%E6%B1%82%E8%AF%B4%E6%98%8E%E4%B9%A6.md)
+
 <div align="center">
   <h3>🎨 智能PPT创作平台 | AI-Powered Presentation Creator</h3>
   <p>基于 Next.js 和 AI 技术的专业演示文稿制作工具</p>
